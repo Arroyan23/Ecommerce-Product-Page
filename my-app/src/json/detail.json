@@ -1,0 +1,16 @@
+{
+  "fav001": {
+    "stock": 30,
+    "terjual": 30,
+    "condition": "Baru",
+    "etalase": "Tekhnologi",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet neque id mauris venenatis sodales. Ut id arcu massa. Mauris quis aliquet justo. Sed rutrum vulputate enim et lacinia. Curabitur sem urna, pharetra sed magna vitae, vestibulum dapibus ex. Ut vel quam et turpis imperdiet accumsan. Donec lobortis eleifend."
+  },
+  "fav002": {
+    "stock": 38,
+    "terjual": 20,
+    "condition": "Baru",
+    "etalase": "Tekhnologi",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet neque id mauris venenatis sodales. Ut id arcu massa. Mauris quis aliquet justo. Sed rutrum vulputate enim et lacinia. Curabitur sem urna, pharetra sed magna vitae, vestibulum dapibus ex. Ut vel quam et turpis imperdiet accumsan. Donec lobortis eleifend."
+  }
+}

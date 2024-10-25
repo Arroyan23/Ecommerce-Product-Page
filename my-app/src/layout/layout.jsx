@@ -9,7 +9,7 @@ import {
 function LayoutRouter() {
   return (
     <>
-      <div className="flex border-b-4 justify-between h-10  items-center p-6">
+      <div className="flex border-b-4 justify-between h-10  items-center p-6 fixed top-0 left-0 w-full bg-white z-10">
         <div className="flex space-x-4">
           <h1 className="font-dyna text-2xl">KatalogKita</h1>
         </div>
