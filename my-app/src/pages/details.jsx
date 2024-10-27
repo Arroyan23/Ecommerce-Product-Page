@@ -2,7 +2,8 @@
 import productsPost from "../json/products.json";
 import detailsPost from "../json/detail.json";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import CartComp from "../components/cart";
 
 function Detail() {
   const [product, setProduct] = useState();
@@ -12,8 +13,35 @@ function Detail() {
   //   temukan detail di json berbeda
   const detailJSON = detailsPost[id];
 
+  // menambahkan fungsi untuk local storage
+  const [cart, setCart] = useState([]);
+  // load local storage pertama kali ketika di refresh
+  useEffect(() => {
+    // ambil cartnya terlebih dahulu
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    // jika terdapat cart nya maka ambil terlebih dahulu cartnya
+    if (savedCart) {
+      setCart(savedCart);
+    }
+  }, []);
+
+  // simpan ke dalam cart setiap kali ada perubahan di dalam cart
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(cart);
+  }, [cart]);
+
+  // function untuk menambah cart
+
+  const addCartToLocalStorage = (productObject) => {
+    // menambahkan ke local storage
+    setCart([...cart, productObject]);
+  };
+
   return (
     <>
+      <div className=""></div>
       <div className="mt-24"></div>
       {/* <div className="mt-24"></div>
       <div className="max-w-6xl mx-auto">
@@ -23,13 +51,14 @@ function Detail() {
         <img
           src={findById.poster}
           alt=""
+          bo
           className="h-80 w-80 rounded-lg shadow-lg object-cover"
         />
         <div className="row ml-9 flex-1 max-w-lg">
           <p className="text-lg font-bold text-slate-500">{findById.brand}</p>
           <p className="mb-7">Terjual {detailJSON.terjual}</p>
           <p className="text-4xl font-bold font-lexend">{findById.price}</p>
-          <div className="mt-9 border-t border-b py-2">
+          <div className="mt-9 border-t border-white border-b py-2">
             <p className="font-bold font-lexend">Detail</p>
           </div>
           <div className="mt-4">
@@ -44,19 +73,11 @@ function Detail() {
             <p className="mt-5">{detailJSON.description}</p>
           </div>
         </div>
-        <div className="cart border  p-5">
-          <p>Atur Jumlah dan Catatan</p>
-          <div className="flex mt-9">
-            <div className="flex space-x-3 border px-3 mr-3">
-              <button>-</button>
-              <p>1</p>
-              <button>+</button>
-            </div>
-            <div className="">
-              <p>Stok Jumlah: {detailJSON.stock}</p>
-            </div>  
-          </div>
-        </div>
+        <CartComp
+          detailJSON={detailJSON}
+          dataNormal={findById}
+          onAddClick={addCartToLocalStorage}
+        />
       </div>
     </>
   );
